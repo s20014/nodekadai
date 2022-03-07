@@ -75,11 +75,5 @@ module.exports = {
         const redirectPath = res.locals.redirect
         if (redirectPath !== undefined) res.redirect(redirectPath)
         else next()
-    },
-    showLoginPage: (req, res) => {
-        res.render("login/courses")
-    },
-    showLoginPages: (req, res) => {
-        res.render("login/login")
     }
 }

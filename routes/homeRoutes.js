@@ -9,10 +9,6 @@ router.get("/:category/:thread/new", homeController.newMessage)
 router.post("/:category/:thread/create", homeController.createMessage, homeController.redirectView)
 router.get("/:category/:thread", homeController.thread)
 router.get("/:category", homeController.category)
-
-router.get("/login/login", homeController.showLoginPages)
-router.get("/login/courses", homeController.showLoginPage)
-
 router.get("/", homeController.index)
 
 module.exports = router

@@ -1,0 +1,13 @@
+<div>
+    <h1>test</h1>
+    <a href="/<%= category %>/<%= thread %>/new">new</a>
+    <% messages.forEach((message, i) => { %>
+        <div sty>
+            <p>
+                <%= i %>
+                <%= message.userName %>
+            </p>
+            <h3><%= message.message %></h3>
+        </div>
+    <% }) %>
+</div>

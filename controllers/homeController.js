@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose')
 const Thread = require("../models/thread")
+const messageSchema = require("../models/messageSchema")
 
 module.exports = {
     index: (req, res) => {
@@ -32,6 +33,44 @@ module.exports = {
                 next()
             })
     },
+
+    thread: (req, res, next) => {
+        const category = req.params.category
+        const thread = req.params.thread
+        const Message = mongoose.model(`${category}-${thread}`, messageSchema)
+        Message.find({})
+            .then(messages => {
+                console.log(messages)
+                res.locals.messages = messages
+                res.locals.category = category
+                res.locals.thread = thread
+                console.log(messages)
+                res.render("thread")
+            })
+    },
+
+    createMessage: (req, res, next) => {
+        const category = req.params.category
+        const thread = req.params.thread
+        const Message = mongoose.model(`${category}-${thread}`, messageSchema)
+        const params = {
+            message: req.body.message,
+            userName: req.body.user
+        }
+        Message.create(params)
+            .then(() => {
+                console.log("successfully create new message")
+                res.locals.redirect = `/${category}/${thread}`
+                next()
+            })
+    },
+
+    newMessage: (req, res, next) => {
+        res.locals.category = req.params.category
+        res.locals.thread = req.params.thread
+        res.render("newMessage")
+    },
+
     redirectView: (req, res, next) => {
         const redirectPath = res.locals.redirect
         if (redirectPath !== undefined) res.redirect(redirectPath)

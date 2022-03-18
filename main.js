@@ -13,7 +13,7 @@ const express = require("express"),
     cookieParser = require("cookie-parser")
 
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://127.0.0.1:27017/keiziban")
+mongoose.connect("mongodb://127.0.0.1:27017/keiziban_1")
     .then(() => {console.log("successfully! connect mongoose")})
     .catch(error => {throw error})
 

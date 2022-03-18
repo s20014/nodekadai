@@ -1,3 +1,5 @@
+<% if (loggedIn) { %>
+
 <div>
     <form action="/<%= category %>/create" method="POST">
         <input type="text" name="title" placeholder="Title" autofocus><br/>
@@ -5,3 +7,4 @@
         <button type="submit">Create</button>
     </form>
 </div>
+<% } %>

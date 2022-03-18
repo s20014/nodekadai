@@ -38,14 +38,17 @@ module.exports = {
         const category = req.params.category
         const thread = req.params.thread
         const Message = mongoose.model(`${category}-${thread}`, messageSchema)
+
         Message.find({})
             .then(messages => {
-                console.log(messages)
-                res.locals.messages = messages
+                res.locals.letters = messages
                 res.locals.category = category
                 res.locals.thread = thread
                 console.log(messages)
                 res.render("thread")
+            })
+            .catch(errer => {
+                console.log(errer)
             })
     },
 
@@ -61,6 +64,7 @@ module.exports = {
             .then(() => {
                 console.log("successfully create new message")
                 res.locals.redirect = `/${category}/${thread}`
+                console.log("succsejfjdjfk")
                 next()
             })
     },

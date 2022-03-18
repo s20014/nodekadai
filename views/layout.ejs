@@ -11,9 +11,11 @@
 </head>
 
 <body>
+
 <div id="nav">
     <div class="col-sm nav-align">
         <h1 id="title">どうぶつで語ろう掲示板</h1>
+
     </div>
     <div class="col-sm nav-align">
         <a href="/">
@@ -22,8 +24,15 @@
         <a href="/users/new">
             <span class="button">ユーザー新規登録</span>
         </a>
-        <a href="/users/login">
-            <span class="button">ログイン画面</span>
+        <% if (loggedIn) { %>
+            <a href="/users/logout">
+                <span class="button">ログアウト</span>
+            </a>
+        <% } else { %>
+            <a href="/users/login">
+                <span class="button">ログイン画面</span>
+            </a>
+        <% } %>
         </a>
     </div>
 </div>
